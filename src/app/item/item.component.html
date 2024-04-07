@@ -1,1 +1,70 @@
-<p>item works!</p>
+<div class="container mt-4" >
+ 
+    <div class="card">
+            <h1>Inventory Manager Web Version</h1>
+     
+    <form>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" [(ngModel)]="iName" [ngModelOptions]="{standalone: true}"  class="form-control" id="name" placeholder="Enter Name">
+     
+        </div>
+     
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" [(ngModel)]="iDescription" [ngModelOptions]="{standalone: true}"  class="form-control" id="address" placeholder="Enter address"/>
+      
+          </div>
+     
+          <div class="form-group">
+            <label>Quantity</label>
+            <input type="text" [(ngModel)]="iQuantity" [ngModelOptions]="{standalone: true}" class="form-control" id="mobile" placeholder="Enter Mobile"/>
+      
+          </div>
+        
+        <button type="submit" class="btn btn-primary mt-4" (click)="save()" >Submit</button>
+      </form>
+    </div>
+    <div>
+     
+     
+        <div class="container mt-4" >
+     
+            <h1>Items</h1>
+     
+     
+     
+     
+        <table class="table">
+            <thead>
+             <h1 *ngIf="!isResultLoaded">Loading.................</h1>
+            
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Option</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemArray">
+     
+                <th scope="row">{{item.itemID  }}</th>
+                <td>{{item.iName  | uppercase}}</td>
+                <td>{{item.iDescription }}</td>
+                <td>{{item.iQuantity }}</td>
+     
+                <td>
+                  <button type="button" class="btn btn-success" (click)="setUpdate(item)">Edit</button>
+                  
+                  <button type="button" class="btn btn-danger" (click)="setDelete(item)">Delete</button>
+                
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+     
+     
+        </div>
